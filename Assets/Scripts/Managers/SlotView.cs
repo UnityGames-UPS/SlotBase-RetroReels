@@ -46,6 +46,7 @@ public class SlotView : MonoBehaviour
     [SerializeField] private float fastSpinSpeed = 6000f;
     [SerializeField] private float reelStartStagger = 0.08f;
     [SerializeField] private float reelStopStagger = 0.12f;
+    [SerializeField] private float normalReelStopStagger = 0.5f;
 
     [Header("Stop Animation Settings")]
     [SerializeField] private float stopOvershootDistance = 50f;
@@ -56,7 +57,7 @@ public class SlotView : MonoBehaviour
     [SerializeField] private float quickStopStagger = 0.06f;
     [SerializeField] private float quickStopOvershoot = 20f;
     [SerializeField] private float quickStopDuration = 0.2f;
-    [SerializeField] private int minSpinCyclesBeforeStop = 3;
+    [SerializeField] private int minSpinCyclesBeforeStop = 1;
 
 
     [Header("Win Animation Settings")]
@@ -699,7 +700,9 @@ public class SlotView : MonoBehaviour
 
         AudioManager.Instance?.StopReelSpinLoop();
 
-        float stagger = isQuickStop ? quickStopStagger : (isTurbo ? (reelStopStagger * 0.5f) : reelStopStagger);
+        float stagger = isQuickStop
+            ? quickStopStagger
+            : (isTurbo ? (reelStopStagger * 0.5f) : normalReelStopStagger);
 
         for (int col = 0; col < maxCols; col++)
         {

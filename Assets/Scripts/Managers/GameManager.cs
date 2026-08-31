@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private SlotView slotView;
 
     [Header("Spin Settings")]
-    [SerializeField] private float normalSpinDuration = 3.5f;
+    [SerializeField] private float normalSpinDuration = 1.5f;
     [SerializeField] private float turboSpinDuration = 2.0f;
     [SerializeField] private float quickSpinCycleDuration = 0.8f;
 

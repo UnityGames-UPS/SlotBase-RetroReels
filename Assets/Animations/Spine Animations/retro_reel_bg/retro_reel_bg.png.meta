@@ -1,0 +1,884 @@
+fileFormatVersion: 2
+guid: 9df3e38a1c6a1054c826bafb54c99cc1
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5543847139995381143
+    second: retro_reel_bg_0
+  - first:
+      213: -2322016728951644593
+    second: retro_reel_bg_1
+  - first:
+      213: 8083916671463322541
+    second: retro_reel_bg_2
+  - first:
+      213: -8696282344789324254
+    second: retro_reel_bg_3
+  - first:
+      213: -531404232454469490
+    second: retro_reel_bg_4
+  - first:
+      213: 7482623875148675967
+    second: retro_reel_bg_5
+  - first:
+      213: -3460881220041116818
+    second: retro_reel_bg_6
+  - first:
+      213: -2034065762682522690
+    second: retro_reel_bg_7
+  - first:
+      213: -1904554396738681782
+    second: retro_reel_bg_8
+  - first:
+      213: -3048952847349708083
+    second: retro_reel_bg_9
+  - first:
+      213: 3716058513032822256
+    second: retro_reel_bg_10
+  - first:
+      213: -3228965444309668096
+    second: retro_reel_bg_11
+  - first:
+      213: -911395190346734172
+    second: retro_reel_bg_12
+  - first:
+      213: 7649510906486469843
+    second: retro_reel_bg_13
+  - first:
+      213: -8376864137324279357
+    second: retro_reel_bg_14
+  - first:
+      213: -5107556207824832766
+    second: retro_reel_bg_15
+  - first:
+      213: 4220089666864176106
+    second: retro_reel_bg_16
+  - first:
+      213: -4281243525029480221
+    second: retro_reel_bg_17
+  - first:
+      213: 1910926941616767968
+    second: retro_reel_bg_18
+  - first:
+      213: -582671804216701204
+    second: retro_reel_bg_19
+  - first:
+      213: 4776149388741226073
+    second: retro_reel_bg_20
+  - first:
+      213: -3657371310136861151
+    second: retro_reel_bg_21
+  - first:
+      213: 6796182214349321548
+    second: retro_reel_bg_22
+  - first:
+      213: 1348570332685245263
+    second: retro_reel_bg_23
+  - first:
+      213: -3500447095307573245
+    second: retro_reel_bg_24
+  - first:
+      213: 4009322096638421301
+    second: retro_reel_bg_25
+  - first:
+      213: -192913995656581504
+    second: retro_reel_bg_26
+  - first:
+      213: -8512248837678469822
+    second: retro_reel_bg_27
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 0
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 0
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 0
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: retro_reel_bg_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1083
+        width: 84
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79d6d7ce993bfec40800000000000000
+      internalID: 5543847139995381143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: retro_reel_bg_1
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1
+        width: 1922
+        height: 1082
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4e925c661a86cfd0800000000000000
+      internalID: -2322016728951644593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: retro_reel_bg_2
+      rect:
+        serializedVersion: 2
+        x: 1923
+        y: 1022
+        width: 67
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da3fd6cd167df2070800000000000000
+      internalID: 8083916671463322541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: retro_reel_bg_3
+      rect:
+        serializedVersion: 2
+        x: 1923
+        y: 972
+        width: 81
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22ec4544849905780800000000000000
+      internalID: -8696282344789324254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: retro_reel_bg_4
+      rect:
+        serializedVersion: 2
+        x: 2004
+        y: 999
+        width: 81
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8889648aa210a8f0800000000000000
+      internalID: -531404232454469490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: retro_reel_bg_5
+      rect:
+        serializedVersion: 2
+        x: 2006
+        y: 949
+        width: 72
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7bf71215ce97d760800000000000000
+      internalID: 7482623875148675967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: retro_reel_bg_6
+      rect:
+        serializedVersion: 2
+        x: 1923
+        y: 922
+        width: 83
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e63f0adedda78ffc0800000000000000
+      internalID: -3460881220041116818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: retro_reel_bg_7
+      rect:
+        serializedVersion: 2
+        x: 1923
+        y: 858
+        width: 83
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb3368d37fb85c3e0800000000000000
+      internalID: -2034065762682522690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: retro_reel_bg_8
+      rect:
+        serializedVersion: 2
+        x: 2006
+        y: 899
+        width: 72
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a448bfeedd9a195e0800000000000000
+      internalID: -1904554396738681782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: retro_reel_bg_9
+      rect:
+        serializedVersion: 2
+        x: 1923
+        y: 787
+        width: 83
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dca0ec41a81ffa5d0800000000000000
+      internalID: -3048952847349708083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: retro_reel_bg_10
+      rect:
+        serializedVersion: 2
+        x: 2006
+        y: 840
+        width: 72
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0fd33e17787129330800000000000000
+      internalID: 3716058513032822256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: retro_reel_bg_11
+      rect:
+        serializedVersion: 2
+        x: 2006
+        y: 781
+        width: 72
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00f29e349096033d0800000000000000
+      internalID: -3228965444309668096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: retro_reel_bg_12
+      rect:
+        serializedVersion: 2
+        x: 1923
+        y: 705
+        width: 83
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a5226537e21a53f0800000000000000
+      internalID: -911395190346734172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: retro_reel_bg_13
+      rect:
+        serializedVersion: 2
+        x: 2006
+        y: 712
+        width: 72
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d43a9ef3a5882a60800000000000000
+      internalID: 7649510906486469843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: retro_reel_bg_14
+      rect:
+        serializedVersion: 2
+        x: 2006
+        y: 641
+        width: 72
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c9c31b13766fbb80800000000000000
+      internalID: -8376864137324279357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: retro_reel_bg_15
+      rect:
+        serializedVersion: 2
+        x: 1923
+        y: 623
+        width: 83
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2077242a0b05e19b0800000000000000
+      internalID: -5107556207824832766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: retro_reel_bg_16
+      rect:
+        serializedVersion: 2
+        x: 1923
+        y: 575
+        width: 84
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aeb5cb96135c09a30800000000000000
+      internalID: 4220089666864176106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: retro_reel_bg_17
+      rect:
+        serializedVersion: 2
+        x: 2007
+        y: 560
+        width: 76
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e83dad62b7f594c0800000000000000
+      internalID: -4281243525029480221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: retro_reel_bg_18
+      rect:
+        serializedVersion: 2
+        x: 1923
+        y: 527
+        width: 84
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e38acacde9f48a10800000000000000
+      internalID: 1910926941616767968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: retro_reel_bg_19
+      rect:
+        serializedVersion: 2
+        x: 1923
+        y: 462
+        width: 84
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cee0709c41fe9e7f0800000000000000
+      internalID: -582671804216701204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: retro_reel_bg_20
+      rect:
+        serializedVersion: 2
+        x: 2007
+        y: 478
+        width: 76
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95eae1e509a484240800000000000000
+      internalID: 4776149388741226073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: retro_reel_bg_21
+      rect:
+        serializedVersion: 2
+        x: 1923
+        y: 397
+        width: 84
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12e5697cb286e3dc0800000000000000
+      internalID: -3657371310136861151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: retro_reel_bg_22
+      rect:
+        serializedVersion: 2
+        x: 1923
+        y: 1
+        width: 117
+        height: 396
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c457e1b57b3e05e50800000000000000
+      internalID: 6796182214349321548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: retro_reel_bg_23
+      rect:
+        serializedVersion: 2
+        x: 2007
+        y: 397
+        width: 79
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4b9552929517b210800000000000000
+      internalID: 1348570332685245263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: retro_reel_bg_24
+      rect:
+        serializedVersion: 2
+        x: 2040
+        y: 226
+        width: 36
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 308e429b9e9eb6fc0800000000000000
+      internalID: -3500447095307573245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: retro_reel_bg_25
+      rect:
+        serializedVersion: 2
+        x: 2040
+        y: 154
+        width: 40
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 539e1406439f3a730800000000000000
+      internalID: 4009322096638421301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: retro_reel_bg_26
+      rect:
+        serializedVersion: 2
+        x: 2040
+        y: 82
+        width: 40
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 08e20b83eb1a25df0800000000000000
+      internalID: -192913995656581504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: retro_reel_bg_27
+      rect:
+        serializedVersion: 2
+        x: 2040
+        y: 1
+        width: 43
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24d617e28ca6ed980800000000000000
+      internalID: -8512248837678469822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      retro_reel_bg_0: 5543847139995381143
+      retro_reel_bg_1: -2322016728951644593
+      retro_reel_bg_10: 3716058513032822256
+      retro_reel_bg_11: -3228965444309668096
+      retro_reel_bg_12: -911395190346734172
+      retro_reel_bg_13: 7649510906486469843
+      retro_reel_bg_14: -8376864137324279357
+      retro_reel_bg_15: -5107556207824832766
+      retro_reel_bg_16: 4220089666864176106
+      retro_reel_bg_17: -4281243525029480221
+      retro_reel_bg_18: 1910926941616767968
+      retro_reel_bg_19: -582671804216701204
+      retro_reel_bg_2: 8083916671463322541
+      retro_reel_bg_20: 4776149388741226073
+      retro_reel_bg_21: -3657371310136861151
+      retro_reel_bg_22: 6796182214349321548
+      retro_reel_bg_23: 1348570332685245263
+      retro_reel_bg_24: -3500447095307573245
+      retro_reel_bg_25: 4009322096638421301
+      retro_reel_bg_26: -192913995656581504
+      retro_reel_bg_27: -8512248837678469822
+      retro_reel_bg_3: -8696282344789324254
+      retro_reel_bg_4: -531404232454469490
+      retro_reel_bg_5: 7482623875148675967
+      retro_reel_bg_6: -3460881220041116818
+      retro_reel_bg_7: -2034065762682522690
+      retro_reel_bg_8: -1904554396738681782
+      retro_reel_bg_9: -3048952847349708083
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
