@@ -142,12 +142,12 @@ TextureImporter:
       name: retro_reel_3frames_glow_0
       rect:
         serializedVersion: 2
-        x: 147
-        y: 149
-        width: 1627
-        height: 855
+        x: 1212
+        y: 200
+        width: 510
+        height: 761
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -164,7 +164,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 

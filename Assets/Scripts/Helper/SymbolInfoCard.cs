@@ -112,20 +112,19 @@ public class SymbolInfoCard : MonoBehaviour
             symbolInfo = gameManager.gameConfig.symbols.Find(s => s.id == symbolId);
         }
 
-        bool isWild = (symbolId == 1 || symbolId == 2);
-        bool isWheel = (symbolId >= 10 && symbolId <= 13);
+        bool isWild = symbolInfo != null && symbolInfo.isWild;
 
-        if (isWild || isWheel)
+        if (isWild)
         {
             infoText.alignment = TextAlignmentOptions.Center;
             infoText.enableWordWrapping = true;
-            if (isWheel)
+            if (!string.IsNullOrEmpty(symbolInfo.description))
             {
-                infoText.text = "2 Bonus Symbols + Wheel Bonus Triggers Lucky Wheels";
+                infoText.text = symbolInfo.description;
             }
-            else if (isWild)
+            else
             {
-                infoText.text = "Substitutes For Any Other Symbol Except For Bonus Symbols And Wheel Symbols";
+                infoText.text = $"Wild multiplier x{symbolInfo.wildMultiplier}.";
             }
         }
         else

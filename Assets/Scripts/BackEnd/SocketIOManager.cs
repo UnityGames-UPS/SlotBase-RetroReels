@@ -266,7 +266,7 @@ public class SocketIOManager : MonoBehaviour
             var initData = JsonConvert.DeserializeObject<InitData>(jsonData);
             var gameConfig = InitDataConverter.ConvertToGameConfig(initData);
             var playerData = InitDataConverter.ConvertToPlayerData(initData.player);
-            var initialMatrix = GenerateRandomMatrix(gameConfig.rowCount);
+            var initialMatrix = GenerateRandomMatrix(gameConfig.rowCount, gameConfig.symbolCount);
 
             isInitialized = true;
 
@@ -559,8 +559,7 @@ public class SocketIOManager : MonoBehaviour
             type = "SPIN",
             payload = new SpinPayload
             {
-                betIndex = betIndex,
-                isFreeSpin = false
+                betIndex = betIndex
             }
         };
 
@@ -635,7 +634,7 @@ public class SocketIOManager : MonoBehaviour
     }
 
     #endregion
-    private List<List<int>> GenerateRandomMatrix(int rowCount)
+    private List<List<int>> GenerateRandomMatrix(int rowCount, int symbolCount)
     {
         int reelCount = (gameManager != null && gameManager.gameConfig != null) ? gameManager.gameConfig.reelCount : 3;
         var matrix = new List<List<int>>();
@@ -644,7 +643,7 @@ public class SocketIOManager : MonoBehaviour
             var column = new List<int>();
             for (int row = 0; row < rowCount; row++)
             {
-                column.Add(UnityEngine.Random.Range(0, 10));
+                column.Add(UnityEngine.Random.Range(0, Mathf.Max(1, symbolCount)));
             }
             matrix.Add(column);
         }
