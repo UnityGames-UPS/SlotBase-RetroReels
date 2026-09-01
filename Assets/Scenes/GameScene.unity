@@ -15181,6 +15181,7 @@ MonoBehaviour:
   guideBackButton: {fileID: 1882644028}
   guideOpenButtonPortrait: {fileID: 593848524}
   totalLineCountText: {fileID: 731576410}
+  totalLineCountTextPortrait: {fileID: 760646805}
   ruleRed7Text: {fileID: 561135624}
   rulePurple7Text: {fileID: 368799245}
   ruleBlue7Text: {fileID: 1172117279}

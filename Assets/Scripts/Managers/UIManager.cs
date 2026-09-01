@@ -125,6 +125,7 @@ public class UIManager : MonoBehaviour
 
     [Header("Game Rules Dynamic Texts - 6 Symbols")]
     [SerializeField] private TMP_Text totalLineCountText;
+    [SerializeField] private TMP_Text totalLineCountTextPortrait;
     [SerializeField] private TMP_Text ruleRed7Text;
     [SerializeField] private TMP_Text rulePurple7Text;
     [SerializeField] private TMP_Text ruleBlue7Text;
@@ -1180,10 +1181,7 @@ public class UIManager : MonoBehaviour
     {
         if (gameManager == null || gameManager.gameConfig == null) return;
 
-        if (totalLineCountText != null)
-        {
-            totalLineCountText.text = gameManager.gameConfig.paylineCount.ToString();
-        }
+        SetTMPText(totalLineCountText, totalLineCountTextPortrait, gameManager.gameConfig.paylineCount.ToString());
 
         SetRuleSymbolText(1, ruleRed7Text);
         SetRuleSymbolText(2, rulePurple7Text);
