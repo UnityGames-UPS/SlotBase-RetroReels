@@ -40,8 +40,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip clipReelStop;
     [SerializeField] private AudioClip clipTurboButtonClick;
     [SerializeField] private AudioClip clipTensionBuilder;
-    [SerializeField] private AudioClip clipReelSpinLoop;
-    [SerializeField] private AudioClip clipFeatureBg;
+    [SerializeField] private AudioClip clipWinBox;
 
     private bool _musicEnabled = true;
     private bool _sfxEnabled   = true;
@@ -55,9 +54,7 @@ public class AudioManager : MonoBehaviour
 
     internal AudioClip ClipTurboButtonClick => clipTurboButtonClick;
     internal AudioClip ClipTensionBuilder => clipTensionBuilder;
-    internal AudioClip ClipReelSpinLoop => clipReelSpinLoop;
     internal AudioClip ClipResultPopupOpen => clipResultPopupOpen;
-    internal AudioClip ClipFeatureBg => clipFeatureBg;
 
     internal void SetMusicEnabled(bool on)
     {
@@ -211,21 +208,6 @@ public class AudioManager : MonoBehaviour
         PlayUISound(clipAutoplayPanelOpen != null ? clipAutoplayPanelOpen : clipPopupOpenClose);
     }
 
-    internal void PlayFeatureBg()
-    {
-        if (clipFeatureBg == null) return;
-        PlayLoop(bgMusicSource, clipFeatureBg);
-    }
-
-    internal void StopFeatureBg()
-    {
-        if (bgMusicSource != null && bgMusicSource.clip == clipFeatureBg)
-        {
-            StopBgMusic();
-            PlayBgMusic();
-        }
-    }
-
     internal void PlayReelStop()
     {
         PlayUISound(clipReelStop);
@@ -257,27 +239,10 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    internal void PlayReelSpinLoop()
+    internal void PlayWinBox()
     {
-        if (!_sfxEnabled || clipReelSpinLoop == null) return;
-        AudioSource targetSource = (reserveSource != null) ? reserveSource : uiSource;
-        PlayLoop(targetSource, clipReelSpinLoop);
+        PlayUISound(clipWinBox);
     }
-
-    internal void StopReelSpinLoop()
-    {
-        if (reserveSource != null && reserveSource.clip == clipReelSpinLoop)
-        {
-            StopSource(reserveSource);
-        }
-        if (uiSource != null && uiSource.clip == clipReelSpinLoop)
-        {
-            StopSource(uiSource);
-        }
-    }
-
-    internal void PlayReelSpin() => PlayReelSpinLoop();
-    internal void StopReelSpin() => StopReelSpinLoop();
 
     private bool isForceMuted = false;
 

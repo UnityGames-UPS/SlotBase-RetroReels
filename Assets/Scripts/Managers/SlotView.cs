@@ -126,7 +126,6 @@ public class SlotView : MonoBehaviour
         if (winBoxObject) winBoxObject.SetActive(false);
         if (symbolInfoCard) symbolInfoCard.HideCard();
         AudioManager.Instance?.StopTensionBuilder();
-        AudioManager.Instance?.StopReelSpinLoop();
     }
 
     private void SetupSymbolButtons()
@@ -452,7 +451,6 @@ public class SlotView : MonoBehaviour
         }
 
         DisableAllOverlays();
-        AudioManager.Instance?.PlayReelSpinLoop();
 
         for (int i = 0; i < reelCycleCount.Count; i++)
         {
@@ -656,8 +654,6 @@ public class SlotView : MonoBehaviour
         }
         else
         {
-            AudioManager.Instance?.StopReelSpinLoop();
-
             for (int col = 0; col < maxCols; col++)
             {
                 float delay = col * stagger;
@@ -668,7 +664,6 @@ public class SlotView : MonoBehaviour
             yield return new WaitForSeconds(longestStopTime);
         }
 
-        AudioManager.Instance?.StopReelSpinLoop();
         AudioManager.Instance?.StopTensionBuilder();
         SetAnticipationVisible(false);
 
@@ -885,6 +880,7 @@ public class SlotView : MonoBehaviour
         if (winBoxObject != null)
         {
             winBoxObject.SetActive(true);
+            AudioManager.Instance?.PlayWinBox();
         }
     }
 

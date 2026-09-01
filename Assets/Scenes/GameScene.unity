@@ -20054,7 +20054,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f521a04de7f494272a617b2719edd271, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SocketIOManager
-  testToken: 8790f36157e74555bb374c3ff981f267
+  testToken: b45466dbb935495bb70deadff7ae5784
   gameManager: {fileID: 1206269883}
   uiManager: {fileID: 885496184}
   popupManager: {fileID: 1363796882}
@@ -20938,9 +20938,8 @@ MonoBehaviour:
   clipAutoplayPanelOpen: {fileID: 8300000, guid: b5fa0e1081b524a02aa50b9b2088ef61, type: 3}
   clipReelStop: {fileID: 8300000, guid: 463cfb302c60f434fa0edb1244e20449, type: 3}
   clipTurboButtonClick: {fileID: 8300000, guid: 1545ce2f353594bdd85973934497bbba, type: 3}
-  clipTensionBuilder: {fileID: 8300000, guid: 35b556493dbc54e51b268680ac44643f, type: 3}
-  clipReelSpinLoop: {fileID: 8300000, guid: 5bcdeb6b38ac841c88386e9358561009, type: 3}
-  clipFeatureBg: {fileID: 8300000, guid: 5def6f465182f4f18a4f12d0bcde6db0, type: 3}
+  clipTensionBuilder: {fileID: 8300000, guid: 7a5efddc3d2655d4396d15f5638e3965, type: 3}
+  clipWinBox: {fileID: 8300000, guid: 067629d4ce4a26e499b0179e85d4dc3f, type: 3}
 --- !u!4 &1330086577
 Transform:
   m_ObjectHideFlags: 0
