@@ -37,31 +37,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject winTextObjectPortrait;
     [SerializeField] private GameObject goodLuckObjectPortrait;
 
-    [Header("Win Type Popup")]
-    [SerializeField] private GameObject winTypePopupObject;
-    [SerializeField] private CanvasGroup winTypeCanvasGroup;
-    [SerializeField] private RectTransform winTypePopupRect;
-    [SerializeField] private TMP_Text winTypeWinText;
-    [SerializeField] private GameObject winTypeWinTextContainer;
-    [SerializeField] private GameObject bigWinTitleObject;
-    [SerializeField] private GameObject megaWinTitleObject;
-    [SerializeField] private GameObject legendaryWinTitleObject;
-    [SerializeField] private Button winTypeFullScreenButton;
-    [SerializeField] private StarFountain winTypeStarRain;
-
-    [Header("Win Type Threshold Settings (Multipliers of Bet)")]
-    [SerializeField] private double bigWinThreshold = 5.0;
-    [SerializeField] private double megaWinThreshold = 10.0;
-    [SerializeField] private double legendaryWinThreshold = 20.0;
-
-    [Header("Win Type Timing Settings")]
-    [SerializeField] private float maxCountDuration = 0.4f;
-    [SerializeField] private float autoCloseDelay = 0.5f;
-
-    internal double BigWinThreshold => bigWinThreshold;
-    internal double MegaWinThreshold => megaWinThreshold;
-    internal double LegendaryWinThreshold => legendaryWinThreshold;
-
     [Header("Spin Button")]
     [SerializeField] private Button spinButton;
     [SerializeField] private Button stopButton;
@@ -215,18 +190,6 @@ public class UIManager : MonoBehaviour
 
     [Header("UI State")]
     private double currentWinDisplayValue = 0;
-    private bool isSpecialWinActive = false;
-    public bool IsSpecialWinActive => isSpecialWinActive;
-    public System.Action OnSpecialWinComplete;
-
-    private Coroutine winTypeCountCoroutine;
-    private Coroutine winTypeAutoCloseCoroutine;
-    private bool isWinTypeCounting;
-    private double finalWinTypeAmount;
-    private double currentWinTypeCount;
-    private double winTypeTotalBet;
-    private int activeWinTypePhase;
-    private System.Action onWinTypeCompleteCallback;
 
 
 
@@ -316,7 +279,6 @@ public class UIManager : MonoBehaviour
         SetGameObjectActive(settingsPanel, settingsPanelPortrait, false);
         if (gameRulesPanel) gameRulesPanel.SetActive(false);
         if (guidePanel) guidePanel.SetActive(false);
-        if (winTypePopupObject != null) winTypePopupObject.SetActive(false);
         UpdatePingDisplay("-- ms");
     }
 
@@ -447,12 +409,6 @@ public class UIManager : MonoBehaviour
         if (shrinkButton) shrinkButton.onClick.AddListener(() => { AudioManager.Instance?.PlayButton(); OnShrink(); });
         if (expandButtonPortrait) expandButtonPortrait.onClick.AddListener(() => { AudioManager.Instance?.PlayButton(); OnExpand(); });
         if (shrinkButtonPortrait) shrinkButtonPortrait.onClick.AddListener(() => { AudioManager.Instance?.PlayButton(); OnShrink(); });
-
-        if (winTypeFullScreenButton != null)
-        {
-            winTypeFullScreenButton.onClick.RemoveAllListeners();
-            winTypeFullScreenButton.onClick.AddListener(OnWinTypeScreenClicked);
-        }
 
         if (normalSpeedButton) normalSpeedButton.onClick.AddListener(() => { AudioManager.Instance?.PlayTurboButtonClick(); SetSpeedMode(SpinSpeed.Turbo); });
         if (turboSpeedButton) turboSpeedButton.onClick.AddListener(() => { AudioManager.Instance?.PlayTurboButtonClick(); SetSpeedMode(SpinSpeed.QuickSpin); });
@@ -595,245 +551,6 @@ public class UIManager : MonoBehaviour
 
             SetBetControlsEnabled(true);
             SetButtonInteractable(settingsOpenButton, settingsOpenButtonPortrait, true);
-        }
-    }
-
-    internal void TriggerWinTypePopup(double winAmount, double totalBetAmount, System.Action onComplete = null)
-    {
-        double totalBet = totalBetAmount > 0 ? totalBetAmount : (gameManager != null ? gameManager.currentBetAmount : 0.01);
-        double multiplier = winAmount / totalBet;
-
-
-        if (winTypePopupObject == null)
-        {
-            onComplete?.Invoke();
-            return;
-        }
-
-        if (multiplier < bigWinThreshold)
-        {
-            onComplete?.Invoke();
-            return;
-        }
-
-        finalWinTypeAmount = winAmount;
-        winTypeTotalBet = totalBet;
-        onWinTypeCompleteCallback = onComplete;
-        isWinTypeCounting = true;
-        currentWinTypeCount = 0;
-        activeWinTypePhase = 0;
-
-        if (multiplier >= legendaryWinThreshold)
-        {
-            SetWinTitleActive(legendaryWinTitleObject);
-        }
-        else if (multiplier >= megaWinThreshold)
-        {
-            SetWinTitleActive(megaWinTitleObject);
-        }
-        else
-        {
-            SetWinTitleActive(bigWinTitleObject);
-        }
-
-        if (winTypeWinText != null)
-        {
-            winTypeWinText.text = "0.00";
-        }
-
-        isSpecialWinActive = true;
-        DisableControlsDuringWinAnimation();
-
-        winTypePopupObject.SetActive(true);
-
-        CanvasGroup cg = winTypeCanvasGroup != null ? winTypeCanvasGroup : winTypePopupObject.GetComponent<CanvasGroup>();
-        if (cg == null) cg = winTypePopupObject.AddComponent<CanvasGroup>();
-        winTypeCanvasGroup = cg;
-
-        RectTransform rTr = winTypePopupRect != null ? winTypePopupRect : winTypePopupObject.GetComponent<RectTransform>();
-        winTypePopupRect = rTr;
-
-        cg.DOKill();
-        cg.alpha = 0f;
-
-        if (rTr != null)
-        {
-            rTr.DOKill();
-            rTr.localScale = Vector3.one;
-        }
-
-        Sequence openSeq = DOTween.Sequence();
-        openSeq.Join(cg.DOFade(1f, 0.35f).SetEase(Ease.OutQuad));
-
-        if (winTypeWinTextContainer != null)
-        {
-            Transform tTr = winTypeWinTextContainer.transform;
-            tTr.DOKill();
-            Vector3 curScale = tTr.localScale;
-            float targetX = curScale.x != 0f ? curScale.x : 1f;
-            float targetZ = curScale.z != 0f ? curScale.z : 1f;
-            tTr.localScale = new Vector3(targetX, 0f, targetZ);
-
-            Sequence textSeq = DOTween.Sequence();
-            textSeq.Append(tTr.DOScaleY(1.2f, 0.45f).SetEase(Ease.OutCubic));
-            textSeq.Append(tTr.DOScaleY(1.0f, 0.25f).SetEase(Ease.InOutSine));
-            openSeq.Join(textSeq);
-        }
-
-        AudioManager.Instance?.PlayWinTypePopupOpen();
-        if (winTypeStarRain != null) winTypeStarRain.PlayStarRain();
-
-        if (winTypeCountCoroutine != null) StopCoroutine(winTypeCountCoroutine);
-        if (winTypeAutoCloseCoroutine != null) StopCoroutine(winTypeAutoCloseCoroutine);
-
-        winTypeCountCoroutine = StartCoroutine(WinTypeCountSequence());
-    }
-
-    private IEnumerator WinTypeCountSequence()
-    {
-        float elapsed = 0f;
-        float duration = (maxCountDuration > 0 && maxCountDuration <= 0.5f) ? maxCountDuration : 0.4f;
-
-        while (elapsed < duration)
-        {
-            elapsed += Time.deltaTime;
-            float progress = Mathf.Clamp01(elapsed / duration);
-            currentWinTypeCount = LerpDouble(0, finalWinTypeAmount, progress);
-
-            if (winTypeWinText != null)
-            {
-                winTypeWinText.text = currentWinTypeCount.ToString("N2");
-            }
-
-            yield return null;
-        }
-
-        CompleteWinTypeCounting();
-        winTypeAutoCloseCoroutine = StartCoroutine(WinTypeAutoCloseSequence());
-    }
-
-    private double LerpDouble(double start, double end, float progress)
-    {
-        return start + (end - start) * progress;
-    }
-
-
-
-    private void SetWinTitleActive(GameObject activeTitle)
-    {
-        if (bigWinTitleObject != null) bigWinTitleObject.SetActive(bigWinTitleObject == activeTitle);
-        if (megaWinTitleObject != null) megaWinTitleObject.SetActive(megaWinTitleObject == activeTitle);
-        if (legendaryWinTitleObject != null) legendaryWinTitleObject.SetActive(legendaryWinTitleObject == activeTitle);
-    }
-
-    private void CompleteWinTypeCounting()
-    {
-        isWinTypeCounting = false;
-        currentWinTypeCount = finalWinTypeAmount;
-
-        if (winTypeWinText != null)
-        {
-            winTypeWinText.text = finalWinTypeAmount.ToString("N2");
-        }
-    }
-
-    private IEnumerator WinTypeAutoCloseSequence()
-    {
-        yield return new WaitForSeconds(autoCloseDelay);
-        CloseWinTypePopup();
-    }
-
-    public void OnWinTypeScreenClicked()
-    {
-        if (isWinTypeCounting)
-        {
-            if (winTypeCountCoroutine != null) StopCoroutine(winTypeCountCoroutine);
-            CompleteWinTypeCounting();
-
-            if (winTypeAutoCloseCoroutine != null) StopCoroutine(winTypeAutoCloseCoroutine);
-            winTypeAutoCloseCoroutine = StartCoroutine(WinTypeAutoCloseSequence());
-        }
-        else
-        {
-            CloseWinTypePopup();
-        }
-    }
-
-    public void CloseWinTypePopup()
-    {
-        if (winTypeCountCoroutine != null) StopCoroutine(winTypeCountCoroutine);
-        if (winTypeAutoCloseCoroutine != null) StopCoroutine(winTypeAutoCloseCoroutine);
-
-        AudioManager.Instance?.StopWinTypePopupOpen();
-        if (winTypeStarRain != null) winTypeStarRain.StopStarRain();
-
-        CanvasGroup cg = winTypeCanvasGroup != null ? winTypeCanvasGroup : (winTypePopupObject != null ? winTypePopupObject.GetComponent<CanvasGroup>() : null);
-        if (cg == null && winTypePopupObject != null) cg = winTypePopupObject.AddComponent<CanvasGroup>();
-        winTypeCanvasGroup = cg;
-
-        RectTransform rTr = winTypePopupRect != null ? winTypePopupRect : (winTypePopupObject != null ? winTypePopupObject.GetComponent<RectTransform>() : null);
-        winTypePopupRect = rTr;
-
-        Sequence closeSeq = DOTween.Sequence();
-        if (cg != null)
-        {
-            cg.DOKill();
-            closeSeq.Join(cg.DOFade(0f, 0.25f).SetEase(Ease.InQuad));
-        }
-
-        if (rTr != null)
-        {
-            rTr.DOKill();
-        }
-
-        closeSeq.OnComplete(() =>
-        {
-            if (winTypePopupObject != null)
-            {
-                winTypePopupObject.SetActive(false);
-            }
-
-            isSpecialWinActive = false;
-            EnableControlsAfterWinAnimation();
-
-            System.Action callback = onWinTypeCompleteCallback;
-            onWinTypeCompleteCallback = null;
-            callback?.Invoke();
-        });
-    }
-
-    internal void TriggerBigWinPopup(SpinResult result, System.Action onComplete = null)
-    {
-        if (result == null)
-        {
-            onComplete?.Invoke();
-            return;
-        }
-
-        double bet = gameManager != null ? gameManager.currentBetAmount : 0.01;
-        double win = result.grandTotalWin > 0 ? result.grandTotalWin : result.winAmount;
-        TriggerWinTypePopup(win, bet, onComplete);
-    }
-
-    internal void DisableControlsDuringWinAnimation()
-    {
-        SetBetControlsEnabled(false);
-        SetSpinStopButtonStates(isSpinningState: false, isInteractable: false);
-    }
-
-    internal void EnableControlsAfterWinAnimation()
-    {
-        if (isSpecialWinActive) return;
-
-        if (gameManager.isAutoPlaying)
-        {
-            SetSpinStopButtonStates(isSpinningState: true, isInteractable: true);
-        }
-        else
-        {
-            SetBetControlsEnabled(true);
-            SetButtonInteractable(settingsOpenButton, settingsOpenButtonPortrait, true);
-            SetSpinStopButtonStates(isSpinningState: false, isInteractable: true);
         }
     }
 

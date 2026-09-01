@@ -14,8 +14,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float normalSpinDuration = 1.5f;
     [SerializeField] private float turboSpinDuration = 2.0f;
     [SerializeField] private float quickSpinCycleDuration = 0.8f;
-
-    [SerializeField] private double WinThreshold = 5.0;
+    [SerializeField, Min(0f)] private float autoPlayWinBoxMinimumDuration = 1f;
 
     internal GameConfig gameConfig;
     internal PlayerData playerData;
@@ -36,16 +35,12 @@ public class GameManager : MonoBehaviour
 
     private Coroutine spinCoroutine;
     private bool stopRequested;
-    private bool waitingForSpecialWin;
+    private float winBoxShownTime = -1f;
 
     #region Initialization
 
     private void Start()
     {
-        if (uiManager != null)
-        {
-            WinThreshold = uiManager.BigWinThreshold;
-        }
         currentState = GameState.Initializing;
         currentSpinSpeed = SpinSpeed.Normal;
         isInitialized = false;
@@ -184,6 +179,7 @@ public class GameManager : MonoBehaviour
         lastResult = null;
         currentState = GameState.Spinning;
         stopRequested = false;
+        winBoxShownTime = -1f;
 
         playerData.balance -= GetTotalPay();
         if (playerData.balance < 0) playerData.balance = 0;
@@ -256,105 +252,24 @@ public class GameManager : MonoBehaviour
             };
         }
 
-        double bet = currentBetAmount > 0 ? currentBetAmount : 0.01;
         double winVal = lastResult != null ? (lastResult.grandTotalWin > 0 ? lastResult.grandTotalWin : lastResult.winAmount) : 0;
-        double multiplier = bet > 0 ? (winVal / bet) : 0;
+
+        uiManager.OnSpinStopping(lastResult);
+        currentState = GameState.Idle;
 
         if (lastResult != null && winVal > 0)
         {
-            if (multiplier >= WinThreshold)
+            slotView?.ShowWinBox();
+            if (isAutoPlaying && slotView != null)
             {
-                uiManager.DisableControlsDuringWinAnimation();
-                currentState = GameState.Idle;
-                waitingForSpecialWin = true;
-                StartCoroutine(TriggerWinPopupWithDelay(0.3f, lastResult));
-                if (lastResult.winLines != null && lastResult.winLines.Count > 0 && slotView != null)
-                {
-                    slotView.ShowWinLineAnimation(lastResult.winLines, OnWinAnimationComplete);
-                }
-                else
-                {
-                    OnWinAnimationComplete();
-                }
-            }
-            else
-            {
-                uiManager.OnSpinStopping(lastResult);
-                uiManager.EnableControlsAfterWinAnimation();
-                uiManager.OnSpinCompleted(lastResult);
-                currentState = GameState.Idle;
-                if (lastResult.winLines != null && lastResult.winLines.Count > 0 && slotView != null)
-                {
-                    slotView.ShowWinLineAnimation(lastResult.winLines, OnWinAnimationComplete);
-                }
-                else
-                {
-                    OnWinAnimationComplete();
-                }
-            }
-        }
-        else
-        {
-            uiManager.OnSpinStopping(lastResult);
-            currentState = GameState.Idle;
-            OnWinAnimationComplete();
-        }
-    }
-
-    private IEnumerator TriggerWinPopupWithDelay(float delay, SpinResult result)
-    {
-        if (result == null) yield break;
-        double bet = currentBetAmount > 0 ? currentBetAmount : 0.01;
-        double winVal = result.grandTotalWin > 0 ? result.grandTotalWin : result.winAmount;
-        double multiplier = bet > 0 ? (winVal / bet) : 0;
-
-        if (multiplier < WinThreshold)
-        {
-            waitingForSpecialWin = false;
-            yield break;
-        }
-
-        waitingForSpecialWin = true;
-
-        if (delay > 0)
-        {
-            yield return new WaitForSeconds(delay);
-        }
-
-        uiManager.TriggerBigWinPopup(result, () =>
-        {
-            waitingForSpecialWin = false;
-        });
-    }
-
-    private void OnWinAnimationComplete()
-    {
-        if (lastResult != null)
-        {
-            double bet = currentBetAmount > 0 ? currentBetAmount : 0.01;
-            double winVal = lastResult.grandTotalWin > 0 ? lastResult.grandTotalWin : lastResult.winAmount;
-            double multiplier = bet > 0 ? (winVal / bet) : 0;
-
-            if (multiplier >= WinThreshold)
-            {
-                uiManager.OnSpinStopping(lastResult);
+                winBoxShownTime = Time.time;
             }
         }
 
-        StartCoroutine(ProcessSpecialFeaturesAfterWin());
+        CompleteSpinPresentation();
     }
 
-    private IEnumerator ProcessSpecialFeaturesAfterWin()
-    {
-        while (waitingForSpecialWin || uiManager.IsSpecialWinActive)
-        {
-            yield return null;
-        }
-
-        ResumeAfterSpecialFeature();
-    }
-
-    private void ResumeAfterSpecialFeature()
+    private void CompleteSpinPresentation()
     {
         if (isAutoPlaying)
         {
@@ -375,12 +290,15 @@ public class GameManager : MonoBehaviour
     private IEnumerator DelayBeforeNextRound()
     {
         float delayTime = currentSpinSpeed == SpinSpeed.QuickSpin ? 0.3f : 0.5f;
-        yield return new WaitForSeconds(delayTime);
 
-        while (waitingForSpecialWin || uiManager.IsSpecialWinActive)
+        if (winBoxShownTime >= 0f)
         {
-            yield return null;
+            float visibleDuration = Time.time - winBoxShownTime;
+            float remainingWinBoxTime = Mathf.Max(0f, autoPlayWinBoxMinimumDuration - visibleDuration);
+            delayTime = Mathf.Max(delayTime, remainingWinBoxTime);
         }
+
+        yield return new WaitForSeconds(delayTime);
 
         ProcessSpinResult();
     }
@@ -466,7 +384,7 @@ public class GameManager : MonoBehaviour
         {
             if (slotView != null && lastResult != null && lastResult.resultMatrix != null)
             {
-                slotView.QuickStop(lastResult.resultMatrix);
+                slotView.QuickStop(lastResult.resultMatrix, OnReelsStoppedComplete);
             }
         }
     }
