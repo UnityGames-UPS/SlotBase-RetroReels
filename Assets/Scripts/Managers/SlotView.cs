@@ -116,6 +116,7 @@ public class SlotView : MonoBehaviour
         }
 
         DisableAllOverlays();
+        RandomizeInitialVisibleSymbols();
         SetupSymbolButtons();
     }
 
@@ -213,12 +214,24 @@ public class SlotView : MonoBehaviour
             }
         }
 
-        if (currentDisplayMatrix != null && col < currentDisplayMatrix.Count && row < currentDisplayMatrix[col].Count)
+    }
+
+    private void RandomizeInitialVisibleSymbols()
+    {
+        if (reelImagesList == null || symbolSprites == null || symbolSprites.Length <= 1) return;
+
+        for (int col = 0; col < reelImagesList.Count; col++)
         {
-            int fallbackId = currentDisplayMatrix[col][row];
-            if (symbolInfoCard != null)
+            ReelImages reel = reelImagesList[col];
+            if (reel == null || reel.images == null) continue;
+
+            for (int row = 0; row < 3; row++)
             {
-                symbolInfoCard.ShowCard(fallbackId, col, row, symbolRect, gameManager, customYOffset);
+                int imageIndex = VisibleResultStartIndex + row;
+                if (imageIndex >= reel.images.Count || reel.images[imageIndex] == null) continue;
+
+                int randomSymbolId = Random.Range(1, symbolSprites.Length);
+                SetImageSymbol(reel.images[imageIndex], randomSymbolId);
             }
         }
     }
@@ -386,6 +399,7 @@ public class SlotView : MonoBehaviour
                 {
                     SetImageSymbol(reel.images[VisibleResultStartIndex], Random.Range(1, symbolCount));
                     SetImageSymbol(reel.images[resultIconIndex], Random.Range(1, symbolCount));
+                    SetImageSymbol(reel.images[VisibleResultStartIndex + 2], Random.Range(1, symbolCount));
                 }
             }
         }

@@ -123,7 +123,7 @@ public class UIManager : MonoBehaviour
     [Header("Guide Panel - Portrait")]
     [SerializeField] private Button guideOpenButtonPortrait;
 
-    [Header("Game Rules Dynamic Texts - 11 Symbols")]
+    [Header("Game Rules Dynamic Texts - 6 Symbols")]
     [SerializeField] private TMP_Text totalLineCountText;
     [SerializeField] private TMP_Text ruleRed7Text;
     [SerializeField] private TMP_Text rulePurple7Text;
@@ -131,11 +131,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TMP_Text ruleWhiteBar7Text;
     [SerializeField] private TMP_Text ruleTripleBarText;
     [SerializeField] private TMP_Text ruleDoubleBarText;
-    [SerializeField] private TMP_Text ruleSingleBarText;
-    [SerializeField] private TMP_Text rule2XText;
-    [SerializeField] private TMP_Text rule3XText;
-    [SerializeField] private TMP_Text rule4XText;
-    [SerializeField] private TMP_Text rule5XText;
 
     [Header("Game Rules Dynamic Texts - Combination Features")]
     [SerializeField] private TMP_Text ruleAnyBarsText;
@@ -962,6 +957,7 @@ public class UIManager : MonoBehaviour
         if (gameRulesPanel == null) return;
         AudioManager.Instance?.PlayButton();
         gameRulesPanel.SetActive(true);
+        ResetPanelScrollToTop(gameRulesPanel);
     }
 
     private void CloseGameRulesPanel()
@@ -989,6 +985,7 @@ public class UIManager : MonoBehaviour
         if (guidePanel == null) return;
         AudioManager.Instance?.PlayButton();
         guidePanel.SetActive(true);
+        ResetPanelScrollToTop(guidePanel);
     }
 
     private void CloseGuidePanel()
@@ -996,6 +993,27 @@ public class UIManager : MonoBehaviour
         if (guidePanel == null) return;
         AudioManager.Instance?.PlayButton();
         guidePanel.SetActive(false);
+    }
+
+    private void ResetPanelScrollToTop(GameObject panel)
+    {
+        ScrollRect scrollRect = panel.GetComponentInChildren<ScrollRect>(true);
+        if (scrollRect == null) return;
+
+        scrollRect.StopMovement();
+        Canvas.ForceUpdateCanvases();
+        scrollRect.verticalNormalizedPosition = 1f;
+        StartCoroutine(ConfirmPanelScrollAtTop(scrollRect));
+    }
+
+    private IEnumerator ConfirmPanelScrollAtTop(ScrollRect scrollRect)
+    {
+        yield return null;
+        if (scrollRect == null) yield break;
+
+        Canvas.ForceUpdateCanvases();
+        scrollRect.StopMovement();
+        scrollRect.verticalNormalizedPosition = 1f;
     }
 
     #endregion
@@ -1173,11 +1191,6 @@ public class UIManager : MonoBehaviour
         SetRuleSymbolText(4, ruleWhiteBar7Text);
         SetRuleSymbolText(5, ruleTripleBarText);
         SetRuleSymbolText(6, ruleDoubleBarText);
-        SetRuleSymbolText(7, ruleSingleBarText);
-        SetRuleSymbolText(8, rule2XText);
-        SetRuleSymbolText(9, rule3XText);
-        SetRuleSymbolText(10, rule4XText);
-        SetRuleSymbolText(11, rule5XText);
 
         ServerFeatures features = gameManager.gameConfig.features;
         SetRuleFeatureText(features?.anyBars, ruleAnyBarsText);
@@ -1192,7 +1205,7 @@ public class UIManager : MonoBehaviour
         if (symbol != null && symbol.multipliers != null && symbol.multipliers.Count > 0)
         {
             double value = symbol.isWild ? symbol.wildMultiplier : symbol.multipliers[0];
-            textComponent.text = $"X{value.ToString("0.###")}";
+            textComponent.text = $"BET x {value.ToString("0.###")}";
         }
     }
 
@@ -1200,7 +1213,7 @@ public class UIManager : MonoBehaviour
     {
         if (textComponent != null && feature != null && feature.enabled)
         {
-            textComponent.text = $"X{feature.payout.ToString("0.###")}";
+            textComponent.text = $"BET x {feature.payout.ToString("0.###")}";
         }
     }
 
