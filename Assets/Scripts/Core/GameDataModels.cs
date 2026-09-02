@@ -204,6 +204,19 @@ public class SpinPayload
     public int betIndex;
 }
 
+[Serializable]
+public class JackpotOpenRequest
+{
+    public string type = "JACKPOT_OPEN";
+    public JackpotOpenPayload payload = new JackpotOpenPayload();
+}
+
+[Serializable]
+public class JackpotOpenPayload
+{
+  public string tier;
+}
+
 #endregion
 
 #region Game Configuration (Client Side Converted)
