@@ -20054,7 +20054,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f521a04de7f494272a617b2719edd271, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SocketIOManager
-  testToken: b45466dbb935495bb70deadff7ae5784
+  testToken: b6619b8d47be4ffbb584d1be73a5733c
   gameManager: {fileID: 1206269883}
   uiManager: {fileID: 885496184}
   popupManager: {fileID: 1363796882}
@@ -20928,7 +20928,7 @@ MonoBehaviour:
   uiSource: {fileID: 72827552}
   reserveSource: {fileID: 126421844}
   primaryButtonSource: {fileID: 723936146}
-  clipGameMainBg: {fileID: 8300000, guid: b32e0882257b04cf3b6ee31383ad4b02, type: 3}
+  clipGameMainBg: {fileID: 8300000, guid: d8c88b2d06114d34c99e647bca616884, type: 3}
   clipBetPlusMinus: {fileID: 8300000, guid: 963b50cc5a7e148c0a32eb72e5473178, type: 3}
   clipMaxBetReached: {fileID: 8300000, guid: 8cb7fe610bb604eb689ba2167c2eabe6, type: 3}
   clipPrimaryActionButton: {fileID: 8300000, guid: dece2b38e3fac486491e40d70b00577f, type: 3}
@@ -20936,7 +20936,7 @@ MonoBehaviour:
   clipPopupOpenClose: {fileID: 8300000, guid: c2ed94ff9b16b4493b05db8e783049c7, type: 3}
   clipResultPopupOpen: {fileID: 8300000, guid: 207f1a969cd544950a95b346b3069b47, type: 3}
   clipAutoplayPanelOpen: {fileID: 8300000, guid: b5fa0e1081b524a02aa50b9b2088ef61, type: 3}
-  clipReelStop: {fileID: 8300000, guid: 463cfb302c60f434fa0edb1244e20449, type: 3}
+  clipReelStop: {fileID: 8300000, guid: c68a5514ce720e2498789b6ed85523db, type: 3}
   clipTurboButtonClick: {fileID: 8300000, guid: 1545ce2f353594bdd85973934497bbba, type: 3}
   clipTensionBuilder: {fileID: 8300000, guid: 7a5efddc3d2655d4396d15f5638e3965, type: 3}
   clipWinBox: {fileID: 8300000, guid: 067629d4ce4a26e499b0179e85d4dc3f, type: 3}
